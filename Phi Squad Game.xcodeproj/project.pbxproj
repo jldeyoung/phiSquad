@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF9775771E7894530064E12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9775761E7894530064E12C /* AppDelegate.swift */; };
+		BF9775791E7894530064E12C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF9775781E7894530064E12C /* GameScene.sks */; };
+		BF97757B1E7894530064E12C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF97757A1E7894530064E12C /* Actions.sks */; };
+		BF97757D1E7894530064E12C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97757C1E7894530064E12C /* GameScene.swift */; };
+		BF97757F1E7894530064E12C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97757E1E7894530064E12C /* GameViewController.swift */; };
+		BF9775821E7894530064E12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9775801E7894530064E12C /* Main.storyboard */; };
+		BF9775841E7894530064E12C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9775831E7894530064E12C /* Assets.xcassets */; };
+		BF9775871E7894530064E12C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9775851E7894530064E12C /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF9775731E7894520064E12C /* Phi Squad Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phi Squad Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF9775761E7894530064E12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF9775781E7894530064E12C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		BF97757A1E7894530064E12C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		BF97757C1E7894530064E12C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BF97757E1E7894530064E12C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BF9775811E7894530064E12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF9775831E7894530064E12C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF9775861E7894530064E12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF9775881E7894530064E12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF9775701E7894500064E12C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF97756A1E7894500064E12C = {
+			isa = PBXGroup;
+			children = (
+				BF9775751E7894520064E12C /* Phi Squad Game */,
+				BF9775741E7894520064E12C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF9775741E7894520064E12C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF9775731E7894520064E12C /* Phi Squad Game.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF9775751E7894520064E12C /* Phi Squad Game */ = {
+			isa = PBXGroup;
+			children = (
+				BF9775761E7894530064E12C /* AppDelegate.swift */,
+				BF9775781E7894530064E12C /* GameScene.sks */,
+				BF97757A1E7894530064E12C /* Actions.sks */,
+				BF97757C1E7894530064E12C /* GameScene.swift */,
+				BF97757E1E7894530064E12C /* GameViewController.swift */,
+				BF9775801E7894530064E12C /* Main.storyboard */,
+				BF9775831E7894530064E12C /* Assets.xcassets */,
+				BF9775851E7894530064E12C /* LaunchScreen.storyboard */,
+				BF9775881E7894530064E12C /* Info.plist */,
+			);
+			path = "Phi Squad Game";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF9775721E7894500064E12C /* Phi Squad Game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF97758B1E7894530064E12C /* Build configuration list for PBXNativeTarget "Phi Squad Game" */;
+			buildPhases = (
+				BF97756F1E7894500064E12C /* Sources */,
+				BF9775701E7894500064E12C /* Frameworks */,
+				BF9775711E7894500064E12C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Phi Squad Game";
+			productName = "Phi Squad Game";
+			productReference = BF9775731E7894520064E12C /* Phi Squad Game.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF97756B1E7894500064E12C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Joseph DeYoung";
+				TargetAttributes = {
+					BF9775721E7894500064E12C = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BF97756E1E7894500064E12C /* Build configuration list for PBXProject "Phi Squad Game" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF97756A1E7894500064E12C;
+			productRefGroup = BF9775741E7894520064E12C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF9775721E7894500064E12C /* Phi Squad Game */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF9775711E7894500064E12C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF9775821E7894530064E12C /* Main.storyboard in Resources */,
+				BF9775791E7894530064E12C /* GameScene.sks in Resources */,
+				BF9775841E7894530064E12C /* Assets.xcassets in Resources */,
+				BF9775871E7894530064E12C /* LaunchScreen.storyboard in Resources */,
+				BF97757B1E7894530064E12C /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF97756F1E7894500064E12C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF97757D1E7894530064E12C /* GameScene.swift in Sources */,
+				BF97757F1E7894530064E12C /* GameViewController.swift in Sources */,
+				BF9775771E7894530064E12C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF9775801E7894530064E12C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF9775811E7894530064E12C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF9775851E7894530064E12C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF9775861E7894530064E12C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF9775891E7894530064E12C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF97758A1E7894530064E12C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF97758C1E7894530064E12C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Phi Squad Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeYoung.Phi-Squad-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BF97758D1E7894530064E12C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Phi Squad Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeYoung.Phi-Squad-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF97756E1E7894500064E12C /* Build configuration list for PBXProject "Phi Squad Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF9775891E7894530064E12C /* Debug */,
+				BF97758A1E7894530064E12C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF97758B1E7894530064E12C /* Build configuration list for PBXNativeTarget "Phi Squad Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF97758C1E7894530064E12C /* Debug */,
+				BF97758D1E7894530064E12C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF97756B1E7894500064E12C /* Project object */;
+}
