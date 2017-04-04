@@ -11,8 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    let player = SKSpriteNode(imageNamed: "Commando1")
+    let deece = SKSpriteNode(imageNamed: "DC-17m")
     
     override func didMove(to view: SKView) {
         
@@ -26,7 +26,18 @@ class GameScene: SKScene {
             background.name = "background"
             addChild(background)
         }
-
+        
+        player.anchorPoint = CGPoint(x: 0.5, y: 0)
+        player.texture?.filteringMode = SKTextureFilteringMode.nearest
+        player.setScale(15.0)
+        player.zPosition = 10
+        player.position = CGPoint(x: 1334/2, y: 30)
+        addChild(player)
+        
+        deece.texture?.filteringMode = SKTextureFilteringMode.nearest
+        deece.zPosition = 15
+        player.addChild(deece)
+        deece.position = CGPoint(x: -30, y: 280)
     }
     
     
