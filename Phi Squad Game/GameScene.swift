@@ -46,9 +46,10 @@ class GameScene: SKScene {
         player.position = CGPoint(x: 1334/2, y: 30)
         addChild(player)
         
+        deece.removeFromParent()
         deece.texture?.filteringMode = SKTextureFilteringMode.nearest
         deece.zPosition = 15
-        player.addChild(deece)//Here is the problem
+        player.addChild(deece)
         deece.position = CGPoint(x: -30, y: 280)
     }
     
