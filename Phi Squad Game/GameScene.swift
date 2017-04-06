@@ -9,6 +9,12 @@
 import SpriteKit
 import GameplayKit
 
+extension Bool {
+    static func random() -> Bool {
+        return arc4random_uniform(2) == 0
+    }
+}
+
 class GameScene: SKScene {
     
     let player = SKSpriteNode(imageNamed: "Commando1")
@@ -36,7 +42,7 @@ class GameScene: SKScene {
         
         deece.texture?.filteringMode = SKTextureFilteringMode.nearest
         deece.zPosition = 15
-        player.addChild(deece)
+        player.addChild(deece)//Here is the problem
         deece.position = CGPoint(x: -30, y: 280)
     }
     
@@ -107,4 +113,29 @@ class GameScene: SKScene {
         return backgroundNode
     }
 
+    func spawnEnemy() {
+        let enemy = SKSpriteNode(imageNamed: "Droid1")
+        let left = CGPoint(x: -enemy.size.width, y: 30)
+        let right = CGPoint(x: 1334 + enemy.size.width, y: 30)
+        var spawnLeft:Bool = Bool.random()
+        enemy.texture?.filteringMode = SKTextureFilteringMode.nearest
+        enemy.zPosition = 50
+        enemy.name = "enemy"
+        if(spawnLeft == true){
+            enemy.position = left
+        } else {
+            enemy.position = right
+        }
+        
+        addChild(enemy)
+        
+        // let actionMove =
+        //SKAction.moveTo(x: -enemy.size.width/2, duration: 2.3)
+        let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 2.5)
+        //enemy.run(actionMove)
+        let actionRemove = SKAction.removeFromParent()
+        enemy.run(SKAction.sequence([actionMove, actionRemove]))
+        
+    }
+    
 }
