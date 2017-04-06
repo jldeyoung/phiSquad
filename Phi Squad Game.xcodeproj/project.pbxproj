@@ -67,11 +67,11 @@
 				BF97757A1E7894530064E12C /* Actions.sks */,
 				BF97757C1E7894530064E12C /* GameScene.swift */,
 				BF97757E1E7894530064E12C /* GameViewController.swift */,
+				202CB6931E96D51200AB6063 /* GameOverScene.swift */,
 				BF9775801E7894530064E12C /* Main.storyboard */,
 				BF9775831E7894530064E12C /* Assets.xcassets */,
 				BF9775851E7894530064E12C /* LaunchScreen.storyboard */,
 				BF9775881E7894530064E12C /* Info.plist */,
-				202CB6931E96D51200AB6063 /* GameOverScene.swift */,
 			);
 			path = "Phi Squad Game";
 			sourceTree = "<group>";

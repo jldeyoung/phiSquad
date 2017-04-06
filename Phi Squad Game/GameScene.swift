@@ -33,6 +33,12 @@ class GameScene: SKScene {
             addChild(background)
         }
         
+        run(SKAction.repeatForever(
+            SKAction.sequence([SKAction.run() { [weak self] in
+                self?.spawnEnemy()
+                },
+                SKAction.wait(forDuration: 2.5)])))
+        
         player.anchorPoint = CGPoint(x: 0.5, y: 0)
         player.texture?.filteringMode = SKTextureFilteringMode.nearest
         player.setScale(15.0)
@@ -116,26 +122,27 @@ class GameScene: SKScene {
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "Droid1")
         let left = CGPoint(x: -enemy.size.width, y: 30)
-        let right = CGPoint(x: 1334 + enemy.size.width, y: 30)
+        let right = CGPoint(x: size.width + enemy.size.width, y: 30)
         let spawnLeft:Bool = Bool.random()
         enemy.texture?.filteringMode = SKTextureFilteringMode.nearest
         enemy.zPosition = 50
+        enemy.anchorPoint = CGPoint(x: 0.5, y: 0)
+        enemy.setScale(22)
         enemy.name = "enemy"
         if(spawnLeft == true){
             enemy.position = left
+            let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
+            let actionRemove = SKAction.removeFromParent()
+            enemy.run(SKAction.sequence([actionMove, actionRemove]))
+
         } else {
             enemy.position = right
+            let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 5.0)
+            let actionRemove = SKAction.removeFromParent()
+            enemy.run(SKAction.sequence([actionMove, actionRemove]))
+
         }
-        
-        addChild(enemy)
-        
-        // let actionMove =
-        //SKAction.moveTo(x: -enemy.size.width/2, duration: 2.3)
-        let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 2.5)
-        //enemy.run(actionMove)
-        let actionRemove = SKAction.removeFromParent()
-        enemy.run(SKAction.sequence([actionMove, actionRemove]))
-        
+        addChild(enemy)   
     }
     
 }
