@@ -117,7 +117,7 @@ class GameScene: SKScene {
         let enemy = SKSpriteNode(imageNamed: "Droid1")
         let left = CGPoint(x: -enemy.size.width, y: 30)
         let right = CGPoint(x: 1334 + enemy.size.width, y: 30)
-        var spawnLeft:Bool = Bool.random()
+        let spawnLeft:Bool = Bool.random()
         enemy.texture?.filteringMode = SKTextureFilteringMode.nearest
         enemy.zPosition = 50
         enemy.name = "enemy"
