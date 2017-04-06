@@ -1,10 +1,10 @@
 //
 //  GameOverScene.swift
-//  ZombieConga
+//  Phi Squad
 //
 //  Created by Cameron Turf on 2/13/17.
 //  Copyright © 2017 Razeware LLC. All rights reserved.
-//
+// All wins need to be removed from here and replaced with a high score condition...
 
 import Foundation
 import SpriteKit
@@ -23,14 +23,14 @@ class GameOverScene: SKScene {
     override func didMove(to view: SKView) {
         var background: SKSpriteNode
         if (won) {
-            background = SKSpriteNode(imageNamed: "YouWin")
-            run(SKAction.playSoundFileNamed("win.wav",
-                                            waitForCompletion: false))
+            background = SKSpriteNode(imageNamed: "High Score")
+            //run(SKAction.playSoundFileNamed("win.wav",
+                                           // waitForCompletion: false))
             
         } else {
-            background = SKSpriteNode(imageNamed: "YouLose")
-            run(SKAction.playSoundFileNamed("lose.wav",
-                                            waitForCompletion: false))
+            background = SKSpriteNode(imageNamed: "You Lose")
+           // run(SKAction.playSoundFileNamed("lose.wav",
+                                            //waitForCompletion: false))
         }
         
         background.position =
