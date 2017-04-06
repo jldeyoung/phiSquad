@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202CB6941E96D51200AB6063 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CB6931E96D51200AB6063 /* GameOverScene.swift */; };
 		BF9775771E7894530064E12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9775761E7894530064E12C /* AppDelegate.swift */; };
 		BF9775791E7894530064E12C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF9775781E7894530064E12C /* GameScene.sks */; };
 		BF97757B1E7894530064E12C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF97757A1E7894530064E12C /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202CB6931E96D51200AB6063 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		BF9775731E7894520064E12C /* Phi Squad Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phi Squad Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9775761E7894530064E12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF9775781E7894530064E12C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				BF9775831E7894530064E12C /* Assets.xcassets */,
 				BF9775851E7894530064E12C /* LaunchScreen.storyboard */,
 				BF9775881E7894530064E12C /* Info.plist */,
+				202CB6931E96D51200AB6063 /* GameOverScene.swift */,
 			);
 			path = "Phi Squad Game";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			files = (
 				BF97757D1E7894530064E12C /* GameScene.swift in Sources */,
 				BF97757F1E7894530064E12C /* GameViewController.swift in Sources */,
+				202CB6941E96D51200AB6063 /* GameOverScene.swift in Sources */,
 				BF9775771E7894530064E12C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +315,7 @@
 				BF97758D1E7894530064E12C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
