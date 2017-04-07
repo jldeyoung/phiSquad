@@ -48,9 +48,12 @@ class GameScene: SKScene {
         
         deece.removeFromParent()
         deece.texture?.filteringMode = SKTextureFilteringMode.nearest
+        deece.setScale(0.03)
         deece.zPosition = 15
+        deece.position = CGPoint(x: -1.5, y: 18.3)
         player.addChild(deece)
-        deece.position = CGPoint(x: -30, y: 280)
+        
+        //player.xScale = -15
     }
     
     
@@ -138,6 +141,7 @@ class GameScene: SKScene {
 
         } else {
             enemy.position = right
+            enemy.xScale = -22
             let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 5.0)
             let actionRemove = SKAction.removeFromParent()
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
