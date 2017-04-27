@@ -173,4 +173,27 @@ class GameScene: SKScene {
         addChild(enemy)   
     }
     
+    func boundsCheckPlayer() {
+        let left = CGPoint(x: cameraRect.minX, y: cameraRect.minY)
+        let right = CGPoint(x: cameraRect.maxX, y: cameraRect.maxY)
+        player.zPosition = 50
+        if player.position.x <= bottomLeft.x {
+            player.position.x = bottomLeft.x
+            velocity.x = abs(velocity.x)
+        }
+        if player.position.x >= topRight.x {
+            player.position.x = topRight.x
+            velocity.x = -velocity.x
+        }
+        if player.position.y <= bottomLeft.y {
+            player.position.y = bottomLeft.y
+            velocity.y = -velocity.y
+        }
+        if player.position.y >= topRight.y {
+            player.position.y = topRight.y
+            velocity.y = -velocity.y
+        }
+    }
+
+    
 }
