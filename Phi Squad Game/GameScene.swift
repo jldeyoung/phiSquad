@@ -19,6 +19,27 @@ class GameScene: SKScene {
     
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
+    var highScore:CGFloat = 0
+    var playerName:String = ""
+    
+    func readPropertyList(){
+        var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
+        var plistData:[String:AnyObject] = [:]  //our data
+        let plistPath:String? = Bundle.main.path(forResource: "data", ofType: "plist")!
+        let plistXML = FileManager.default.contents(atPath: plistPath!)!
+        do{
+            plistData = try PropertyListSerialization.propertyList(from: plistXML,
+                                                                   options: .mutableContainersAndLeaves,
+                                                                   format: &format)
+                as! [String:AnyObject]
+            highScore = plistData["High Score"] as! CGFloat
+            playerName = plistData["Name"] as! String
+        }
+        catch{
+            print("Error reading plist: \(error), format: \(format)")
+        }
+    }
+
     
     override func didMove(to view: SKView) {
         
@@ -53,6 +74,8 @@ class GameScene: SKScene {
         deece.position = CGPoint(x: -1.5, y: 18.3)
         player.addChild(deece)
         
+        readPropertyList()
+        print("High Score: \(highScore)")
         //player.xScale = -15
     }
     
@@ -99,12 +122,12 @@ class GameScene: SKScene {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
+    }*/
     
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-    }*/
+    }
     
     func backgroundNode() -> SKSpriteNode {
         // 1

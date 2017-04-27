@@ -3,7 +3,7 @@
 //  Phi Squad
 //
 //  Created by Cameron Turf on 2/13/17.
-//  Copyright © 2017 Razeware LLC. All rights reserved.
+//  Copyright © 2017 Joseph DeYoung and CJ Turf All rights reserved.
 // All wins need to be removed from here and replaced with a high score condition...
 
 import Foundation

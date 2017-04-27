@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202CB6941E96D51200AB6063 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CB6931E96D51200AB6063 /* GameOverScene.swift */; };
+		BF73C0EA1EAFED000052ADAE /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF73C0E91EAFED000052ADAE /* data.plist */; };
 		BF9775771E7894530064E12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9775761E7894530064E12C /* AppDelegate.swift */; };
 		BF9775791E7894530064E12C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF9775781E7894530064E12C /* GameScene.sks */; };
 		BF97757B1E7894530064E12C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF97757A1E7894530064E12C /* Actions.sks */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		202CB6931E96D51200AB6063 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		BF73C0E91EAFED000052ADAE /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		BF9775731E7894520064E12C /* Phi Squad Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phi Squad Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9775761E7894530064E12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF9775781E7894530064E12C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				BF97757C1E7894530064E12C /* GameScene.swift */,
 				BF97757E1E7894530064E12C /* GameViewController.swift */,
 				202CB6931E96D51200AB6063 /* GameOverScene.swift */,
+				BF73C0E91EAFED000052ADAE /* data.plist */,
 				BF9775801E7894530064E12C /* Main.storyboard */,
 				BF9775831E7894530064E12C /* Assets.xcassets */,
 				BF9775851E7894530064E12C /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF73C0EA1EAFED000052ADAE /* data.plist in Resources */,
 				BF9775821E7894530064E12C /* Main.storyboard in Resources */,
 				BF9775791E7894530064E12C /* GameScene.sks in Resources */,
 				BF9775841E7894530064E12C /* Assets.xcassets in Resources */,

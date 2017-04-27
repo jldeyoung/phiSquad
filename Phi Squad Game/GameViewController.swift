@@ -12,6 +12,24 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    func readPropertyList(){
+        var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
+        var plistData:[String:AnyObject] = [:]  //our data
+        let plistPath:String? = Bundle.main.path(forResource: "data", ofType: "plist")!
+        let plistXML = FileManager.default.contents(atPath: plistPath!)!
+        do{
+            plistData = try PropertyListSerialization.propertyList(from: plistXML,
+                                                                             options: .mutableContainersAndLeaves,
+                                                                             format: &format)
+                as! [String:AnyObject]
+            var highScore = plistData["High Score"] as! CGFloat
+            var name = plistData["Name"] as! String
+        }
+        catch{
+            print("Error reading plist: \(error), format: \(format)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
