@@ -20,7 +20,12 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
     var highScore:CGFloat = 0
-    var playerName:String = ""
+    var playerName:String = "Name"
+    let playableRect:CGRect = CGRect(x: 0, y: 0, width: 1334, height: 750)
+    var velocity = CGPoint.zero
+    var dt: TimeInterval = 0
+    var lastUpdateTime: TimeInterval = 0
+    var lastTouchLocation: CGPoint = CGPoint.zero
     
     func readPropertyList(){
         var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
@@ -126,7 +131,41 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+        } else {
+            dt = 0 }
+        lastUpdateTime = currentTime
+        
+        move(sprite: player, velocity: velocity)
+    }
+    
+    func sceneTouched(touchLocation:CGPoint) {
+        move(sprite:player, velocity: touchLocation)
+        lastTouchLocation = touchLocation
+    }
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: self)
+        sceneTouched(touchLocation: touchLocation)
+    }
+    override func touchesMoved(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: self)
+        sceneTouched(touchLocation: touchLocation)
+    }
+    
+    func move(sprite: SKSpriteNode, velocity: CGPoint) {
+        let amountToMove = velocity * CGFloat(dt)
+        sprite.position += amountToMove
+        
+        boundsCheckPlayer()
     }
     
     func backgroundNode() -> SKSpriteNode {
@@ -174,8 +213,8 @@ class GameScene: SKScene {
     }
     
     func boundsCheckPlayer() {
-        let left = CGPoint(x: cameraRect.minX, y: cameraRect.minY)
-        let right = CGPoint(x: cameraRect.maxX, y: cameraRect.maxY)
+        let bottomLeft = CGPoint(x: playableRect.minX, y: playableRect.minY)
+        let topRight = CGPoint(x: playableRect.maxX, y: playableRect.maxY)
         player.zPosition = 50
         if player.position.x <= bottomLeft.x {
             player.position.x = bottomLeft.x
