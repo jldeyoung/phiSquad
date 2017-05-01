@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var dt: TimeInterval = 0
     var lastUpdateTime: TimeInterval = 0
     var lastTouchLocation: CGPoint = CGPoint.zero
+    let warningLabel = SKLabelNode(fontNamed: "Times New Roman")
     
     func readPropertyList(){
         var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
@@ -141,7 +142,7 @@ class GameScene: SKScene {
     }
     
     func sceneTouched(touchLocation:CGPoint) {
-        move(sprite:player, velocity: touchLocation)
+        move(sprite:player, velocity: CGPoint(x: touchLocation.x, y: 30))
         lastTouchLocation = touchLocation
     }
     override func touchesBegan(_ touches: Set<UITouch>,
@@ -197,6 +198,10 @@ class GameScene: SKScene {
         enemy.name = "enemy"
         if(spawnLeft == true){
             enemy.position = left
+            warningLabel.text = "!"
+            warningLabel.fontSize = 30
+            warningLabel.position = CGPoint(x: size.width - 50, y: size.height/2)
+            SKAction.wait(forDuration: 1.0)
             let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
             let actionRemove = SKAction.removeFromParent()
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
@@ -204,11 +209,16 @@ class GameScene: SKScene {
         } else {
             enemy.position = right
             enemy.xScale = -22
+            warningLabel.text = "!"
+            warningLabel.fontSize = 30
+            warningLabel.position = CGPoint(x: 50, y: size.height/2)
+            SKAction.wait(forDuration: 1.0)
             let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 5.0)
             let actionRemove = SKAction.removeFromParent()
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
 
         }
+        
         addChild(enemy)   
     }
     
