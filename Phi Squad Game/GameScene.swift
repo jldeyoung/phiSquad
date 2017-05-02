@@ -139,6 +139,9 @@ class GameScene: SKScene {
         lastUpdateTime = currentTime
         
         move(sprite: player, velocity: velocity)
+        
+        highScore += 1
+        print(highScore)
     }
     
     func sceneTouched(touchLocation:CGPoint) {
@@ -196,24 +199,29 @@ class GameScene: SKScene {
         enemy.anchorPoint = CGPoint(x: 0.5, y: 0)
         enemy.setScale(22)
         enemy.name = "enemy"
+        warningLabel.text = "!"
+        warningLabel.fontSize = 60
+        warningLabel.zPosition = 20
+        warningLabel.fontColor = UIColor.red
+        let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
+        let actionRemove = SKAction.removeFromParent()
         if(spawnLeft == true){
             enemy.position = left
-            warningLabel.text = "!"
-            warningLabel.fontSize = 30
-            warningLabel.position = CGPoint(x: size.width - 50, y: size.height/2)
-            SKAction.wait(forDuration: 1.0)
-            let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
-            let actionRemove = SKAction.removeFromParent()
+            warningLabel.position = CGPoint(x: size.width/2, y: size.height/2)
+            addChild(warningLabel)
+            run(SKAction.wait(forDuration: 1.0))
+            warningLabel.run(actionRemove)
+            
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
 
         } else {
             enemy.position = right
             enemy.xScale = -22
-            warningLabel.text = "!"
-            warningLabel.fontSize = 30
-            warningLabel.position = CGPoint(x: 50, y: size.height/2)
-            SKAction.wait(forDuration: 1.0)
-            let actionMove = SKAction.moveBy(x: -(size.width + enemy.size.width), y: 0.0, duration: 5.0)
+            warningLabel.position = CGPoint(x: 100, y: size.height/2)
+            addChild(warningLabel)
+            run(SKAction.wait(forDuration: 1.0))
+            warningLabel.run(actionRemove)
+            let actionMove = SKAction.moveBy(x: (-size.width - enemy.size.width), y: 0.0, duration: 5.0)
             let actionRemove = SKAction.removeFromParent()
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
 
