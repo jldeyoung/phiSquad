@@ -19,6 +19,7 @@ class GameScene: SKScene {
     
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
+    let e5 = SKSpriteNode(imageNamed: "E5BlasterRifle")
     var highScore:CGFloat = 0
     var playerName:String = "Name"
     let playableRect:CGRect = CGRect(x: 0, y: 0, width: 1334, height: 750)
@@ -64,7 +65,7 @@ class GameScene: SKScene {
             SKAction.sequence([SKAction.run() { [weak self] in
                 self?.spawnEnemy()
                 },
-                SKAction.wait(forDuration: 2.5)])))
+                SKAction.wait(forDuration: 5.0)])))
         
         player.anchorPoint = CGPoint(x: 0.5, y: 0)
         player.texture?.filteringMode = SKTextureFilteringMode.nearest
@@ -205,6 +206,12 @@ class GameScene: SKScene {
         warningLabel.fontColor = UIColor.red
         let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
         let actionRemove = SKAction.removeFromParent()
+        e5.removeFromParent()
+        e5.texture?.filteringMode = SKTextureFilteringMode.nearest
+        e5.setScale(0.005)
+        e5.zPosition = 15
+        e5.position = CGPoint(x: -1.3, y: 16.3)
+        enemy.addChild(e5)
         if(spawnLeft == true){
             enemy.position = left
             warningLabel.position = CGPoint(x: size.width/2, y: size.height/2)
