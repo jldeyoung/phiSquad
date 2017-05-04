@@ -208,9 +208,9 @@ class GameScene: SKScene {
         let actionRemove = SKAction.removeFromParent()
         e5.removeFromParent()
         e5.texture?.filteringMode = SKTextureFilteringMode.nearest
-        e5.setScale(0.005)
+        e5.setScale(0.0065)
         e5.zPosition = 15
-        e5.position = CGPoint(x: -1.3, y: 16.3)
+        e5.position = CGPoint(x: 1.3, y: 16.3)
         enemy.addChild(e5)
         if(spawnLeft == true){
             enemy.position = left
