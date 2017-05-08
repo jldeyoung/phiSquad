@@ -20,8 +20,8 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
     let e5 = SKSpriteNode(imageNamed: "E5BlasterRifle")
-    var highScore:CGFloat = 0
-    var playerName:String = "Name"
+    var highScore = 0
+    var playerName = "Name"
     let playableRect:CGRect = CGRect(x: 0, y: 0, width: 1334, height: 750)
     var velocity = CGPoint.zero
     var dt: TimeInterval = 0
@@ -29,24 +29,60 @@ class GameScene: SKScene {
     var lastTouchLocation: CGPoint = CGPoint.zero
     let warningLabel = SKLabelNode(fontNamed: "Times New Roman")
     
-    func readPropertyList(){
-        var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
-        var plistData:[String:AnyObject] = [:]  //our data
-        let plistPath:String? = Bundle.main.path(forResource: "data", ofType: "plist")!
-        let plistXML = FileManager.default.contents(atPath: plistPath!)!
-        do{
-            plistData = try PropertyListSerialization.propertyList(from: plistXML,
-                                                                   options: .mutableContainersAndLeaves,
-                                                                   format: &format)
-                as! [String:AnyObject]
-            highScore = plistData["High Score"] as! CGFloat
-            playerName = plistData["Name"] as! String
+    func readPlist(namePlist: String, key: String) -> AnyObject{
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+        
+        var output:AnyObject = false as AnyObject
+        
+        if let dict = NSMutableDictionary(contentsOfFile: path){
+            output = dict.object(forKey: key)! as AnyObject
+        }else{
+            if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+                if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                    output = dict.object(forKey: key)! as AnyObject
+                }else{
+                    output = false as AnyObject
+                    print("error_read")
+                }
+            }else{
+                output = false as AnyObject
+                print("error_read")
+            }
         }
-        catch{
-            print("Error reading plist: \(error), format: \(format)")
-        }
+        return output
     }
 
+    func writePlist(namePlist: String, key: String, data: AnyObject){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+        
+        if let dict = NSMutableDictionary(contentsOfFile: path){
+            dict.setObject(data, forKey: key as NSCopying)
+            if dict.write(toFile: path, atomically: true){
+                print("plist_write")
+            }else{
+                print("plist_write_error")
+            }
+        }else{
+            if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+                if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                    dict.setObject(data, forKey: key as NSCopying)
+                    if dict.write(toFile: path, atomically: true){
+                        print("plist_write")
+                    }else{
+                        print("plist_write_error")
+                    }
+                }else{
+                    print("plist_write")
+                }
+            }else{
+                print("error_find_plist")
+            }
+        }
+    }
     
     override func didMove(to view: SKView) {
         
@@ -81,9 +117,10 @@ class GameScene: SKScene {
         deece.position = CGPoint(x: -1.5, y: 18.3)
         player.addChild(deece)
         
-        readPropertyList()
+        highScore = readPlist(namePlist: "data", key: "High Score") as! Int
         print("High Score: \(highScore)")
         //player.xScale = -15
+        writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
     }
     
     
@@ -210,7 +247,7 @@ class GameScene: SKScene {
         e5.texture?.filteringMode = SKTextureFilteringMode.nearest
         e5.setScale(0.0065)
         e5.zPosition = 15
-        e5.position = CGPoint(x: 1.3, y: 16.3)
+        e5.position = CGPoint(x: 1.5, y: 16.3)
         enemy.addChild(e5)
         if(spawnLeft == true){
             enemy.position = left
