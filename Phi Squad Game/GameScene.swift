@@ -54,16 +54,35 @@ class GameScene: SKScene {
         return output
     }
 
-    var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-    var path = paths.stringByAppendingPathComponent("data.plist")
-    var fileManager = FileManager.default
-    if (!(fileManager.fileExistsAtPath(path)))
-    {
-    var bundle : NSString = NSBundle.mainBundle().pathForResource("data", ofType: "plist")
-    fileManager.copyItemAtPath(bundle, toPath: path, error:nil)
+    func writePlist(namePlist: String, key: String, data: AnyObject){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+        
+        if let dict = NSMutableDictionary(contentsOfFile: path){
+            dict.setObject(data, forKey: key as NSCopying)
+            if dict.write(toFile: path, atomically: true){
+                print("plist_write")
+            }else{
+                print("plist_write_error")
+            }
+        }else{
+            if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+                if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                    dict.setObject(data, forKey: key as NSCopying)
+                    if dict.write(toFile: path, atomically: true){
+                        print("plist_write")
+                    }else{
+                        print("plist_write_error")
+                    }
+                }else{
+                    print("plist_write")
+                }
+            }else{
+                print("error_find_plist")
+            }
+        }
     }
-    data.setObject(object, forKey: "object")
-    data.writeToFile(path, atomically: true)
     
     override func didMove(to view: SKView) {
         
