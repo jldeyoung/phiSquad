@@ -20,8 +20,8 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
     let e5 = SKSpriteNode(imageNamed: "E5BlasterRifle")
-    var highScore = 0
-    var playerName = "Name"
+    var highScore:NSInteger = 15
+    var playerName:NSString = "Name"
     let playableRect:CGRect = CGRect(x: 0, y: 0, width: 1334, height: 750)
     var velocity = CGPoint.zero
     var dt: TimeInterval = 0
@@ -54,35 +54,16 @@ class GameScene: SKScene {
         return output
     }
 
-    func writePlist(namePlist: String, key: String, data: AnyObject){
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
-        let documentsDirectory = paths.object(at: 0) as! NSString
-        let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
-        
-        if let dict = NSMutableDictionary(contentsOfFile: path){
-            dict.setObject(data, forKey: key as NSCopying)
-            if dict.write(toFile: path, atomically: true){
-                print("plist_write")
-            }else{
-                print("plist_write_error")
-            }
-        }else{
-            if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
-                if let dict = NSMutableDictionary(contentsOfFile: privPath){
-                    dict.setObject(data, forKey: key as NSCopying)
-                    if dict.write(toFile: path, atomically: true){
-                        print("plist_write")
-                    }else{
-                        print("plist_write_error")
-                    }
-                }else{
-                    print("plist_write")
-                }
-            }else{
-                print("error_find_plist")
-            }
-        }
+    var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    var path = paths.stringByAppendingPathComponent("data.plist")
+    var fileManager = FileManager.default
+    if (!(fileManager.fileExistsAtPath(path)))
+    {
+    var bundle : NSString = NSBundle.mainBundle().pathForResource("data", ofType: "plist")
+    fileManager.copyItemAtPath(bundle, toPath: path, error:nil)
     }
+    data.setObject(object, forKey: "object")
+    data.writeToFile(path, atomically: true)
     
     override func didMove(to view: SKView) {
         
@@ -120,7 +101,7 @@ class GameScene: SKScene {
         highScore = readPlist(namePlist: "data", key: "High Score") as! Int
         print("High Score: \(highScore)")
         //player.xScale = -15
-        writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
+        //writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
     }
     
     
@@ -179,7 +160,8 @@ class GameScene: SKScene {
         move(sprite: player, velocity: velocity)
         
         highScore += 1
-        print(highScore)
+        print(highScore as AnyObject)
+        writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
     }
     
     func sceneTouched(touchLocation:CGPoint) {
