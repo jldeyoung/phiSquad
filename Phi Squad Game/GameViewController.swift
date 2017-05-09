@@ -12,7 +12,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
-    func readPropertyList(){
+    /*func readPropertyList(){
         var format = PropertyListSerialization.PropertyListFormat.xml //format of the property list
         var plistData:[String:AnyObject] = [:]  //our data
         let plistPath:String? = Bundle.main.path(forResource: "data", ofType: "plist")!
@@ -29,6 +29,36 @@ class GameViewController: UIViewController {
             print("Error reading plist: \(error), format: \(format)")
         }
     }
+    
+    func writePlist(namePlist: String, key: String, data: AnyObject){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDirectory = paths.object(at: 0) as! NSString
+        let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+        
+        if let dict = NSMutableDictionary(contentsOfFile: path){
+            dict.setObject(data, forKey: key as NSCopying)
+            if dict.write(toFile: path, atomically: true){
+                print("plist_write")
+            }else{
+                print("plist_write_error")
+            }
+        }else{
+            if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+                if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                    dict.setObject(data, forKey: key as NSCopying)
+                    if dict.write(toFile: path, atomically: true){
+                        print("plist_write")
+                    }else{
+                        print("plist_write_error")
+                    }
+                }else{
+                    print("plist_write")
+                }
+            }else{
+                print("error_find_plist")
+            }
+        }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
