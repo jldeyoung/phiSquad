@@ -29,6 +29,11 @@ class GameScene: SKScene {
     var lastTouchLocation: CGPoint = CGPoint.zero
     let warningLabel = SKLabelNode(fontNamed: "Times New Roman")
     
+    var isInvincible: Bool = false
+    
+    var lives = 5
+    var gameOver = false
+    
     func readPlist(namePlist: String, key: String) -> AnyObject{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDirectory = paths.object(at: 0) as! NSString
@@ -181,6 +186,8 @@ class GameScene: SKScene {
         highScore += 1
         print(highScore as AnyObject)
         writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
+        
+        checkCollisions()
     }
     
     func sceneTouched(touchLocation:CGPoint) {
@@ -296,6 +303,41 @@ class GameScene: SKScene {
             velocity.y = -velocity.y
         }
     }
-
-    
+    func playerHit(enemy: SKSpriteNode) {
+        isInvincible = true
+        let blinkTimes = 10.0
+        let duration = 3.0
+        let blinkAction = SKAction.customAction(
+        withDuration: duration) { node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(
+                dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.run() { [weak self] in
+            self?.player.isHidden = false
+            self?.isInvincible = false
+        }
+        player.run(SKAction.sequence([blinkAction, setHidden]))
+        
+        //enemy.removeFromParent()
+        //run(enemyCollisionSound)
+        //loseCats()
+        lives -= 1
+    }
+    func checkCollisions(){
+        var hitEnemies: [SKSpriteNode] = []
+        if(isInvincible == false){
+            enumerateChildNodes(withName: "enemy") { node, _ in
+                let enemy = node as! SKSpriteNode
+                if node.frame.insetBy(dx: 20, dy: 20).intersects(
+                    self.player.frame) {
+                    hitEnemies.append(enemy)
+                }
+            }
+        }
+        for enemy in hitEnemies {
+            playerHit(enemy: enemy)
+        }
+    }
 }
