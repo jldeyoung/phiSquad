@@ -202,9 +202,9 @@ class GameScene: SKScene {
         
         
         if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){
-            move(sprite:player, velocity: CGPoint(x: left, y: 30))
+            move(sprite:player, velocity: CGPoint(x: left, y: 0))
         }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){
-            move(sprite:player, velocity: CGPoint(x: right, y: 30))
+            move(sprite:player, velocity: CGPoint(x: right, y: 0))
         }else{
             //shoot player blaster by spawning blaster bolt as child of deece
         }
