@@ -197,14 +197,13 @@ class GameScene: SKScene {
     let moveRectR:CGRect = CGRect(x: 1554-100, y: 0, width: 100, height: 100)
     
     func sceneTouched(touchLocation:CGPoint) {
-        let left = -(1554/2)
-        let right = 1554/2
-        
         
         if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){
-            move(sprite:player, velocity: CGPoint(x: left, y: 0))
+            player.setScale(15)
+            move(sprite:player, velocity: CGPoint(x: -100, y: 0))
         }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){
-            move(sprite:player, velocity: CGPoint(x: right, y: 0))
+            player.setScale(-15)
+            move(sprite:player, velocity: CGPoint(x: 100, y: 0))
         }else{
             //shoot player blaster by spawning blaster bolt as child of deece
         }
