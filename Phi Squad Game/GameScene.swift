@@ -20,6 +20,8 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Commando1")
     let deece = SKSpriteNode(imageNamed: "DC-17m")
     let e5 = SKSpriteNode(imageNamed: "E5BlasterRifle")
+    let bbr = SKSpriteNode(imageNamed: "BlasterBoltR")
+    let bbb = SKSpriteNode(imageNamed: "BlasterBoltB")
     var highScore:NSInteger = 15
     var playerName:NSString = "Name"
     let playableRect:CGRect = CGRect(x: 0, y: 0, width: 1334, height: 750)
