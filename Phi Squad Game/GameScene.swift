@@ -124,6 +124,21 @@ class GameScene: SKScene {
         
         highScore = readPlist(namePlist: "data", key: "High Score") as! Int
         print("High Score: \(highScore)")
+        
+        let shapeR = SKShapeNode()
+        let path = CGMutablePath()
+        path.addRect(moveRectR)
+        shapeR.path = path
+        shapeR.strokeColor = SKColor.red
+        shapeR.lineWidth = 4.0
+        addChild(shapeR)
+        
+        let shapeL = SKShapeNode()
+        path.addRect(moveRectL)
+        shapeL.path = path
+        shapeL.strokeColor = SKColor.red
+        shapeL.lineWidth = 4.0
+        addChild(shapeL)
         //player.xScale = -15
         //writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
     }
@@ -153,18 +168,6 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
@@ -190,8 +193,22 @@ class GameScene: SKScene {
         checkCollisions()
     }
     
+    let moveRectL:CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
+    let moveRectR:CGRect = CGRect(x: 1554-100, y: 0, width: 100, height: 100)
+    
     func sceneTouched(touchLocation:CGPoint) {
-        move(sprite:player, velocity: CGPoint(x: touchLocation.x, y: 30))
+        let left = -(1554/2)
+        let right = 1554/2
+        
+        
+        if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){
+            move(sprite:player, velocity: CGPoint(x: left, y: 30))
+        }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){
+            move(sprite:player, velocity: CGPoint(x: right, y: 30))
+        }else{
+            //shoot player blaster by spawning blaster bolt as child of deece
+        }
+        
         lastTouchLocation = touchLocation
     }
     override func touchesBegan(_ touches: Set<UITouch>,
@@ -305,8 +322,8 @@ class GameScene: SKScene {
     }
     func playerHit(enemy: SKSpriteNode) {
         isInvincible = true
-        let blinkTimes = 10.0
-        let duration = 3.0
+        let blinkTimes = 5.0
+        let duration = 1.5
         let blinkAction = SKAction.customAction(
         withDuration: duration) { node, elapsedTime in
             let slice = duration / blinkTimes
