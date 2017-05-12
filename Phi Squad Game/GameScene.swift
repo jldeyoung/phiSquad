@@ -36,6 +36,9 @@ class GameScene: SKScene {
     var lives = 5
     var gameOver = false
     
+    let moveRectL:CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
+    let moveRectR:CGRect = CGRect(x: 1234, y: 0, width: 100, height: 100)
+    
     func readPlist(namePlist: String, key: String) -> AnyObject{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDirectory = paths.object(at: 0) as! NSString
@@ -133,6 +136,7 @@ class GameScene: SKScene {
         shapeR.path = path
         shapeR.strokeColor = SKColor.red
         shapeR.lineWidth = 4.0
+        shapeR.zPosition = 20
         addChild(shapeR)
         
         let shapeL = SKShapeNode()
@@ -140,6 +144,7 @@ class GameScene: SKScene {
         shapeL.path = path
         shapeL.strokeColor = SKColor.red
         shapeL.lineWidth = 4.0
+        shapeL.zPosition = 20
         addChild(shapeL)
         //player.xScale = -15
         //writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
@@ -188,26 +193,40 @@ class GameScene: SKScene {
         
         move(sprite: player, velocity: velocity)
         
-        highScore += 1
+        //highScore += 1
         print(highScore as AnyObject)
+        highScore = 0
         writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
         
         checkCollisions()
     }
     
-    let moveRectL:CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-    let moveRectR:CGRect = CGRect(x: 1554-100, y: 0, width: 100, height: 100)
+    
     
     func sceneTouched(touchLocation:CGPoint) {
         
         if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){
-            player.setScale(15)
-            move(sprite:player, velocity: CGPoint(x: -100, y: 0))
+            player.xScale = 15
+            move(sprite:player, velocity: CGPoint(x: -200, y: 0))
         }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){
-            player.setScale(-15)
-            move(sprite:player, velocity: CGPoint(x: 100, y: 0))
+            player.xScale = -15
+            move(sprite:player, velocity: CGPoint(x: 200, y: 0))
         }else{
-            //shoot player blaster by spawning blaster bolt as child of deece
+            if(touchLocation.x >= player.position.x){
+                player.xScale = -15
+                bbb.removeFromParent()
+                bbb.position = CGPoint.zero
+                bbb.zPosition = 14
+                deece.addChild(bbb)
+                move(sprite: bbb, velocity: CGPoint(x: 400, y:0))
+            }else{
+                player.xScale = 15
+                bbb.removeFromParent()
+                bbb.position = CGPoint.zero
+                bbb.zPosition = 14
+                deece.addChild(bbb)
+                move(sprite: bbb, velocity: CGPoint(x: -400, y:0))
+            }
         }
         
         lastTouchLocation = touchLocation
@@ -324,7 +343,7 @@ class GameScene: SKScene {
     func playerHit(enemy: SKSpriteNode) {
         isInvincible = true
         let blinkTimes = 5.0
-        let duration = 1.5
+        let duration = 0.5
         let blinkAction = SKAction.customAction(
         withDuration: duration) { node, elapsedTime in
             let slice = duration / blinkTimes
