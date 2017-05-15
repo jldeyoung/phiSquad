@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202CB6941E96D51200AB6063 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CB6931E96D51200AB6063 /* GameOverScene.swift */; };
+		BF232C5C1ECA51C500972830 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF232C5B1ECA51C500972830 /* MainMenuScene.swift */; };
 		BF29828C1EB3E964006C5A91 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29828B1EB3E964006C5A91 /* MyUtils.swift */; };
 		BF73C0EA1EAFED000052ADAE /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF73C0E91EAFED000052ADAE /* data.plist */; };
 		BF9775771E7894530064E12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9775761E7894530064E12C /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		202CB6931E96D51200AB6063 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		BF232C5B1ECA51C500972830 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		BF29828B1EB3E964006C5A91 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		BF73C0E91EAFED000052ADAE /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		BF9775731E7894520064E12C /* Phi Squad Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phi Squad Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				BF9775761E7894530064E12C /* AppDelegate.swift */,
 				BF9775781E7894530064E12C /* GameScene.sks */,
 				BF97757A1E7894530064E12C /* Actions.sks */,
+				BF232C5B1ECA51C500972830 /* MainMenuScene.swift */,
 				BF97757C1E7894530064E12C /* GameScene.swift */,
 				BF97757E1E7894530064E12C /* GameViewController.swift */,
 				202CB6931E96D51200AB6063 /* GameOverScene.swift */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF232C5C1ECA51C500972830 /* MainMenuScene.swift in Sources */,
 				BF97757D1E7894530064E12C /* GameScene.swift in Sources */,
 				BF29828C1EB3E964006C5A91 /* MyUtils.swift in Sources */,
 				BF97757F1E7894530064E12C /* GameViewController.swift in Sources */,

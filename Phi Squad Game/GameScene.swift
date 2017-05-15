@@ -193,9 +193,6 @@ class GameScene: SKScene {
         
         move(sprite: player, velocity: velocity)
         
-        //highScore += 1
-        print(highScore as AnyObject)
-        highScore = 0
         writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
         
         checkCollisions()
@@ -215,17 +212,22 @@ class GameScene: SKScene {
             if(touchLocation.x >= player.position.x){
                 player.xScale = -15
                 bbb.removeFromParent()
-                bbb.position = CGPoint.zero
-                bbb.zPosition = 14
-                deece.addChild(bbb)
-                move(sprite: bbb, velocity: CGPoint(x: 400, y:0))
+                bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
+                bbb.setScale(5)
+                bbb.position = CGPoint(x: deece.position.x, y: deece.position.y+15)
+                bbb.zPosition = 12
+                addChild(bbb)
+                move(sprite: bbb, velocity: CGPoint(x: 150, y:0))
             }else{
                 player.xScale = 15
                 bbb.removeFromParent()
-                bbb.position = CGPoint.zero
-                bbb.zPosition = 14
-                deece.addChild(bbb)
-                move(sprite: bbb, velocity: CGPoint(x: -400, y:0))
+                bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
+                bbb.setScale(5)
+                //deece.position = CGPoint(x: -1.5, y: 18.3)
+                bbb.position = CGPoint(x: player.position.x-1.5, y: player.position.y+18.3+15)
+                bbb.zPosition = 12
+                addChild(bbb)
+                move(sprite: bbb, velocity: CGPoint(x: -150, y:0))
             }
         }
         
