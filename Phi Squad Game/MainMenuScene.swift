@@ -33,7 +33,7 @@ class MainMenuScene: SKScene{
     func sceneTapped() {
         let transition = SKTransition.doorsOpenHorizontal(withDuration: 1.5)
         let nextScene = GameScene(size: size)
-        nextScene.scaleMode = scaleMode
+        nextScene.scaleMode = .aspectFill
         view?.presentScene(nextScene, transition: transition)
 
     }
