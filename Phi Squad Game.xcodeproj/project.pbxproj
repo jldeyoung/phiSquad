@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202CB6941E96D51200AB6063 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CB6931E96D51200AB6063 /* GameOverScene.swift */; };
-		3F0A837B1ECA543B00D5CB56 /* hitCat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F0A837A1ECA543B00D5CB56 /* hitCat.wav */; };
+		3F0A837D1ECA55D800D5CB56 /* hitCat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F0A837C1ECA55D800D5CB56 /* hitCat.wav */; };
 		BF29828C1EB3E964006C5A91 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29828B1EB3E964006C5A91 /* MyUtils.swift */; };
 		BF73C0EA1EAFED000052ADAE /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF73C0E91EAFED000052ADAE /* data.plist */; };
 		BF9775771E7894530064E12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9775761E7894530064E12C /* AppDelegate.swift */; };
@@ -23,7 +23,7 @@
 
 /* Begin PBXFileReference section */
 		202CB6931E96D51200AB6063 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
-		3F0A837A1ECA543B00D5CB56 /* hitCat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hitCat.wav; path = ../crap/Sounds/hitCat.wav; sourceTree = "<group>"; };
+		3F0A837C1ECA55D800D5CB56 /* hitCat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCat.wav; sourceTree = "<group>"; };
 		BF29828B1EB3E964006C5A91 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		BF73C0E91EAFED000052ADAE /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		BF9775731E7894520064E12C /* Phi Squad Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Phi Squad Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,9 +52,9 @@
 		BF97756A1E7894500064E12C = {
 			isa = PBXGroup;
 			children = (
-				3F0A837A1ECA543B00D5CB56 /* hitCat.wav */,
 				BF9775751E7894520064E12C /* Phi Squad Game */,
 				BF9775741E7894520064E12C /* Products */,
+				3F0A837C1ECA55D800D5CB56 /* hitCat.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,7 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F0A837B1ECA543B00D5CB56 /* hitCat.wav in Resources */,
+				3F0A837D1ECA55D800D5CB56 /* hitCat.wav in Resources */,
 				BF73C0EA1EAFED000052ADAE /* data.plist in Resources */,
 				BF9775821E7894530064E12C /* Main.storyboard in Resources */,
 				BF9775791E7894530064E12C /* GameScene.sks in Resources */,
