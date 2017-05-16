@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .aspectFill
+        scene.anchorPoint = CGPoint.zero
         skView.presentScene(scene)
     }
     override var prefersStatusBarHidden: Bool {

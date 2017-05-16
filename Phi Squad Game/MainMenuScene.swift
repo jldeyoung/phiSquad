@@ -31,10 +31,26 @@ class MainMenuScene: SKScene{
         sceneTapped()
     }
     func sceneTapped() {
-        let transition = SKTransition.doorsOpenHorizontal(withDuration: 1.5)
+        /*let transition = SKTransition.doorsOpenHorizontal(withDuration: 1.5)
         let nextScene = GameScene(size: size)
+        nextScene.anchorPoint = CGPoint.zero
+        nextScene.position = CGPoint.zero
         nextScene.scaleMode = .aspectFill
-        view?.presentScene(nextScene, transition: transition)
-
+        view?.presentScene(nextScene, transition: transition)*/
+        
+        if (self.view ) != nil {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "GameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                // Present the scene
+                view?.presentScene(scene)
+            }
+            
+            view?.ignoresSiblingOrder = true
+            
+            view?.showsFPS = true
+            view?.showsNodeCount = true
+        }
     }
 }
