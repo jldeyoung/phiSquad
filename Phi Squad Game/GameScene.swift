@@ -214,8 +214,8 @@ class GameScene: SKScene {
                 bbb.removeFromParent()
                 bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
                 bbb.setScale(5)
-                bbb.position = CGPoint(x: deece.position.x, y: deece.position.y+15)
-                bbb.zPosition = 12
+                bbb.position = CGPoint(x: player.position.x-1.5, y: player.position.y+18.3+15)
+                bbb.zPosition = 200
                 addChild(bbb)
                 move(sprite: bbb, velocity: CGPoint(x: 150, y:0))
             }else{
@@ -223,9 +223,8 @@ class GameScene: SKScene {
                 bbb.removeFromParent()
                 bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
                 bbb.setScale(5)
-                //deece.position = CGPoint(x: -1.5, y: 18.3)
-                bbb.position = CGPoint(x: player.position.x-1.5, y: player.position.y+18.3+15)
-                bbb.zPosition = 12
+                bbb.position = CGPoint(x: player.position.x-(15*1.5), y: player.position.y+15*(18.3+15))
+                bbb.zPosition = 200
                 addChild(bbb)
                 move(sprite: bbb, velocity: CGPoint(x: -150, y:0))
             }
@@ -284,6 +283,7 @@ class GameScene: SKScene {
         enemy.anchorPoint = CGPoint(x: 0.5, y: 0)
         enemy.setScale(22)
         enemy.name = "enemy"
+        warningLabel.removeFromParent()
         warningLabel.text = "!"
         warningLabel.fontSize = 60
         warningLabel.zPosition = 20
@@ -364,6 +364,13 @@ class GameScene: SKScene {
         //loseCats()
         lives -= 1
     }
+    func blastHit(enemy: SKSpriteNode){
+        enemy.removeAllActions()
+        enemy.removeAllChildren()
+        enemy.removeFromParent()
+        bbb.removeFromParent()
+        highScore += 1
+    }
     func checkCollisions(){
         var hitEnemies: [SKSpriteNode] = []
         if(isInvincible == false){
@@ -378,5 +385,19 @@ class GameScene: SKScene {
         for enemy in hitEnemies {
             playerHit(enemy: enemy)
         }
+        var bHitEnemies: [SKSpriteNode] = []
+        //if(isInvincible == false){
+            enumerateChildNodes(withName: "enemy") { node, _ in
+                let enemy = node as! SKSpriteNode
+                if node.frame.insetBy(dx: 20, dy: 20).intersects(
+                    self.bbb.frame) {
+                    bHitEnemies.append(enemy)
+                }
+            //}
+        }
+        for enemy in bHitEnemies {
+            blastHit(enemy: enemy)
+        }
+
     }
 }
