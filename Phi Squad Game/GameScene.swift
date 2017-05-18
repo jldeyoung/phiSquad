@@ -39,6 +39,10 @@ class GameScene: SKScene {
     let moveRectL:CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
     let moveRectR:CGRect = CGRect(x: 1234, y: 0, width: 100, height: 100)
     
+    let livesLabel = SKLabelNode(fontNamed: "anklepants")
+    let scoreLabel = SKLabelNode(fontNamed: "anklepants")
+    var score = 0
+    
     func readPlist(namePlist: String, key: String) -> AnyObject{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDirectory = paths.object(at: 0) as! NSString
@@ -146,8 +150,28 @@ class GameScene: SKScene {
         shapeL.lineWidth = 4.0
         shapeL.zPosition = 20
         addChild(shapeL)
-        //player.xScale = -15
-        //writePlist(namePlist: "data", key: "High Score", data: highScore as AnyObject)
+        
+        livesLabel.text = "Lives: X"
+        livesLabel.fontColor = SKColor.blue
+        livesLabel.fontSize = 100
+        livesLabel.zPosition = 150
+        livesLabel.horizontalAlignmentMode = .left
+        livesLabel.verticalAlignmentMode = .bottom
+        livesLabel.position = CGPoint(
+            x: -playableRect.size.width/2 + CGFloat(20),
+            y: -playableRect.size.height/2 + CGFloat(20))
+        addChild(livesLabel)
+        
+        scoreLabel.text = "Cats: X"
+        scoreLabel.fontColor = SKColor.blue
+        scoreLabel.fontSize = 100
+        scoreLabel.zPosition = 150
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.verticalAlignmentMode = .bottom
+        scoreLabel.position = CGPoint(
+            x: playableRect.size.width/2 - CGFloat(60),
+            y: -playableRect.size.height/2 + CGFloat(20))
+        addChild(scoreLabel)
     }
     
     
@@ -202,31 +226,37 @@ class GameScene: SKScene {
     
     func sceneTouched(touchLocation:CGPoint) {
         
-        if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){
+        if(touchLocation.x <= moveRectL.maxX && touchLocation.y <= moveRectL.maxY){//touch left box
             player.xScale = 15
-            move(sprite:player, velocity: CGPoint(x: -200, y: 0))
-        }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){
+            player.removeAllActions()
+            player.run(SKAction.moveBy(x: -667, y: 0, duration: 3.0))
+        }else if(touchLocation.x >= moveRectR.minX && touchLocation.y <= moveRectR.maxY){//touch right box
             player.xScale = -15
-            move(sprite:player, velocity: CGPoint(x: 200, y: 0))
+            player.removeAllActions()
+            player.run(SKAction.moveBy(x: 667, y: 0, duration: 3.0))
         }else{
-            if(touchLocation.x >= player.position.x){
+            if(touchLocation.x >= player.position.x){//touch to right
                 player.xScale = -15
+                player.removeAllActions()
                 bbb.removeFromParent()
+                bbb.removeAllActions()
                 bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
                 bbb.setScale(5)
-                bbb.position = CGPoint(x: player.position.x-1.5, y: player.position.y+18.3+15)
+                bbb.position = CGPoint(x: player.position.x+player.size.width/2, y: player.position.y+277.5)
                 bbb.zPosition = 200
                 addChild(bbb)
-                move(sprite: bbb, velocity: CGPoint(x: 150, y:0))
-            }else{
+                bbb.run(SKAction.moveBy(x: 1334, y: 0, duration: 4.0))
+            }else{//touch to left
                 player.xScale = 15
+                player.removeAllActions()
                 bbb.removeFromParent()
+                bbb.removeAllActions()
                 bbb.texture?.filteringMode = SKTextureFilteringMode.nearest
                 bbb.setScale(5)
-                bbb.position = CGPoint(x: player.position.x-(15*1.5), y: player.position.y+15*(18.3+15))
+                bbb.position = CGPoint(x: player.position.x-player.size.width/2, y: player.position.y+277.5)
                 bbb.zPosition = 200
                 addChild(bbb)
-                move(sprite: bbb, velocity: CGPoint(x: -150, y:0))
+                bbb.run(SKAction.moveBy(x: -1334, y: 0, duration: 4.0))
             }
         }
         
@@ -369,6 +399,7 @@ class GameScene: SKScene {
         enemy.removeAllChildren()
         enemy.removeFromParent()
         bbb.removeFromParent()
+        bbb.position = CGPoint(x: size.width/2, y: size.height)
         highScore += 1
     }
     func checkCollisions(){
