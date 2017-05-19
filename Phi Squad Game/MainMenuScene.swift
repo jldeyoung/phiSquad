@@ -21,12 +21,25 @@ class MainMenuScene: SKScene{
         let pressAnywhere = SKLabelNode(fontNamed: "Anklepants")
         pressAnywhere.removeFromParent()
         pressAnywhere.text = "tap anywhere to begin"
-        pressAnywhere.color = UIColor.blue
+        pressAnywhere.color = UIColor.red
         pressAnywhere.fontSize = 80
         pressAnywhere.zPosition = 200
         pressAnywhere.horizontalAlignmentMode = .center
         pressAnywhere.verticalAlignmentMode = .center
         pressAnywhere.position = CGPoint(x: 1334/2,y: 750/2+135)
+        pressAnywhere.run(SKAction.repeatForever(
+            SKAction.sequence([
+                //SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 1.0),
+               //SKAction.colorize(withColorBlendFactor: 0.0, duration: 1.0),
+                //SKAction.colorize(with: SKColor.green, colorBlendFactor: 1.0, duration: 1.0),
+                //SKAction.colorize(withColorBlendFactor: 0.0, duration: 1.0),
+                SKAction.colorize(with: SKColor.blue, colorBlendFactor: 1.0, duration: 1.0),
+                SKAction.colorize(withColorBlendFactor: 0.7, duration: 1.0),
+                SKAction.colorize(with: SKColor.black, colorBlendFactor: 1.0, duration: 1.0),
+                SKAction.colorize(withColorBlendFactor: 0.7, duration: 1.0),
+
+                ])
+        ))
         scene?.addChild(pressAnywhere)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
