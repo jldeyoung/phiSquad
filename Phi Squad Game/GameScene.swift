@@ -43,6 +43,8 @@ class GameScene: SKScene {
     let scoreLabel = SKLabelNode(fontNamed: "anklepants")
     var score = 0
     
+    var difficulty = 0.1
+    
     func readPlist(namePlist: String, key: String) -> AnyObject{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDirectory = paths.object(at: 0) as! NSString
@@ -115,7 +117,7 @@ class GameScene: SKScene {
             SKAction.sequence([SKAction.run() { [weak self] in
                 self?.spawnEnemy()
                 },
-                SKAction.wait(forDuration: 5.0)])))
+                SKAction.wait(forDuration: 5.0-difficulty)])))
         
         player.anchorPoint = CGPoint(x: 0.5, y: 0)
         player.texture?.filteringMode = SKTextureFilteringMode.nearest
@@ -318,7 +320,7 @@ class GameScene: SKScene {
         warningLabel.fontSize = 60
         warningLabel.zPosition = 20
         warningLabel.fontColor = UIColor.red
-        let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0)
+        let actionMove = SKAction.moveBy(x: (size.width + enemy.size.width), y: 0.0, duration: 5.0-difficulty)
         let actionRemove = SKAction.removeFromParent()
         e5.removeFromParent()
         e5.texture?.filteringMode = SKTextureFilteringMode.nearest
@@ -342,7 +344,7 @@ class GameScene: SKScene {
             addChild(warningLabel)
             run(SKAction.wait(forDuration: 1.0))
             warningLabel.run(actionRemove)
-            let actionMove = SKAction.moveBy(x: (-size.width - enemy.size.width), y: 0.0, duration: 5.0)
+            let actionMove = SKAction.moveBy(x: (-size.width - enemy.size.width), y: 0.0, duration: 5.0 - difficulty)
             let actionRemove = SKAction.removeFromParent()
             enemy.run(SKAction.sequence([actionMove, actionRemove]))
 
@@ -401,6 +403,7 @@ class GameScene: SKScene {
         bbb.removeFromParent()
         bbb.position = CGPoint(x: size.width/2, y: size.height)
         highScore += 1
+        difficulty *= 1.01
     }
     func checkCollisions(){
         var hitEnemies: [SKSpriteNode] = []
