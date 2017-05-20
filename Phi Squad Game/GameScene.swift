@@ -38,7 +38,7 @@ class GameScene: SKScene {
     //
     
     let moveRectL:CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-    let moveRectR:CGRect = CGRect(x: 1234, y: 0, width: 100, height: 100)
+    let moveRectR:CGRect = CGRect(x: playableRect.maxX-100, y: 0, width: 100, height: 100)
     
     let livesLabel = SKLabelNode(fontNamed: "anklepants")
     let scoreLabel = SKLabelNode(fontNamed: "anklepants")
